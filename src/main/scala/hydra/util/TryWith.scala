@@ -3,6 +3,9 @@ package hydra.util
 import scala.util.control.NonFatal
 import scala.util.{Failure, Try}
 
+/**
+  * Provides automatic resource management
+  */
 object TryWith {
   def apply[C <: AutoCloseable, R](resource: => C)(f: C => R): Try[R] =
     Try(resource).flatMap(resourceInstance => {
